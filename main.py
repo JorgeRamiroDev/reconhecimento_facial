@@ -8,22 +8,22 @@ ivan_encoding = fr.face_encodings(ivan)[0]
 elon = fr.load_image_file('fotos/Elon.jpg')
 elon_encoding = fr.face_encodings(elon)[0]
 
-lula = fr.load_image_file('fotos/Lula.jpg')
-lula_encoding = fr.face_encodings(lula)[0]
+tony = fr.load_image_file('fotos/tonyStark.jpg')
+tony_encoding = fr.face_encodings(tony)[0]
 
-bolsonaro = fr.load_image_file('fotos/Bolsonaro.jpg')
-bolsonaro_encoding = fr.face_encodings(bolsonaro)[0]
+peter = fr.load_image_file('fotos/peterparker.jpg')
+peter_encoding = fr.face_encodings(peter)[0]
 
 encodings = [
     (ivan_encoding, 'Ivan'), 
-    (elon_encoding, 'Elon'),
-    (lula_encoding, 'Lula'), 
-    (bolsonaro_encoding, 'Bolsonaro')
+    (elon_encoding, 'Elon Musk'),
+    (tony_encoding, 'Tony Stark'), 
+    (peter_encoding, 'Peter Parker')
     ]
 
 # Abre a webcam
 # Digite o número referente a sua webcam 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 
 while True:
     # Captura um frame da webcam
@@ -43,12 +43,12 @@ while True:
         # Compara a codificação do rosto com os encoders carregados
         for desconhecido_encoding, name in encodings:
             # Desenha um retangulo em todos os rostos que encontrar 
-            cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
+            cv2.rectangle(frame, (left, top), (right, bottom), (255, 0, 0), 2)
             match = fr.compare_faces([desconhecido_encoding], face_encoding)[0]
 
             # Se houver uma correspondência, desenha um retângulo verde em volta do rosto e exibe o nome da pessoa
             if match:    
-                cv2.putText(frame, name, (left, bottom + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                cv2.putText(frame, name, (left, bottom + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
 
     # Exibe o frame capturado
     cv2.imshow('Webcam', frame)
