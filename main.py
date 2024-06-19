@@ -2,23 +2,23 @@ import cv2
 import face_recognition as fr 
 
 ############## Informando as pessoas que devem ser reconhecidas 
-ivan = fr.load_image_file('fotos/ivan.jpeg')
+ivan = fr.load_image_file('playground\\facial_database\\WIN_20240619_10_25_42_Pro.jpg')
 ivan_encoding = fr.face_encodings(ivan)[0]
 
-elon = fr.load_image_file('fotos/Elon.jpg')
-elon_encoding = fr.face_encodings(elon)[0]
+# elon = fr.load_image_file('fotos/Elon.jpg')
+# elon_encoding = fr.face_encodings(elon)[0]
 
-tony = fr.load_image_file('fotos/tonyStark.jpg')
-tony_encoding = fr.face_encodings(tony)[0]
+# tony = fr.load_image_file('fotos/tonyStark.jpg')
+# tony_encoding = fr.face_encodings(tony)[0]
 
-peter = fr.load_image_file('fotos/peterparker.jpg')
-peter_encoding = fr.face_encodings(peter)[0]
+# peter = fr.load_image_file('fotos/peterparker.jpg')
+# peter_encoding = fr.face_encodings(peter)[0]
 
 encodings = [
     (ivan_encoding, 'Ivan'), 
-    (elon_encoding, 'Elon Musk'),
-    (tony_encoding, 'Tony Stark'), 
-    (peter_encoding, 'Peter Parker')
+    # (elon_encoding, 'Elon Musk'),
+    # (tony_encoding, 'Tony Stark'), 
+    # (peter_encoding, 'Peter Parker')
     ]
 
 # Abre a webcam
@@ -30,8 +30,9 @@ while True:
     ret, frame = cap.read()
 
     # Localiza os rostos presentes na imagem
+    
     face_locations = fr.face_locations(frame)
-
+    
     # Para cada rosto encontrado faça
     for face_location in face_locations:
         # Pega as coordenadas do rosto
