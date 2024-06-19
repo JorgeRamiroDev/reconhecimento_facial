@@ -5,8 +5,8 @@ import face_recognition as fr
 ivan = fr.load_image_file('playground\\facial_database\\WIN_20240619_10_25_42_Pro.jpg')
 ivan_encoding = fr.face_encodings(ivan)[0]
 
-# elon = fr.load_image_file('fotos/Elon.jpg')
-# elon_encoding = fr.face_encodings(elon)[0]
+elon = fr.load_image_file('fotos/Elon.jpg')
+elon_encoding = fr.face_encodings(elon)[0]
 
 # tony = fr.load_image_file('fotos/tonyStark.jpg')
 # tony_encoding = fr.face_encodings(tony)[0]
@@ -16,14 +16,14 @@ ivan_encoding = fr.face_encodings(ivan)[0]
 
 encodings = [
     (ivan_encoding, 'Ivan'), 
-    # (elon_encoding, 'Elon Musk'),
+    (elon_encoding, 'Elon Musk'),
     # (tony_encoding, 'Tony Stark'), 
     # (peter_encoding, 'Peter Parker')
     ]
 
 # Abre a webcam
 # Digite o número referente a sua webcam 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 
 while True:
     # Captura um frame da webcam
